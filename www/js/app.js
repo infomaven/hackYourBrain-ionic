@@ -58,8 +58,27 @@
             controller: 'FavoritesCtrl'
           }
         }
-      })
+     })
 
+    .state('tab.garden', {
+      url: '/garden',
+      views: {
+        '/garden': {
+          templateUrl: 'templates/garden.html',
+          controller: 'GardenCtrl'
+          }
+         }
+    })
+
+    .state('tab.favorites.detail', {
+      url: '/favorites/detail',
+      views: {
+        '/favorites-detail': {
+          templateUrl: 'templates/favorites-detail.html',
+          controller: 'DetailCtrl'
+          }
+        }
+    })
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/tab/discover');
