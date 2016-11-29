@@ -4,6 +4,8 @@ angular.module('thunder.services', [])
       favorites: []
     }
 
+  var goodScore = 0;
+
     o.addProductToFavorites = function(product) {
     // make sure there is a prouduct to add
     if( !product) return false;

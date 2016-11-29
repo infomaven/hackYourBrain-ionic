@@ -30,12 +30,36 @@ $scope.products = [
         "isGoodSeed": "false"
       },
       {
-        "name": "43 Layers",
-        "tagline": "Teespring for event decorations and gifts",
-        "discussion_url": "https://www.producthunt.com/tech/43-layers",
-        "thumbnail": "https://api.url2png.com/v6/P5329C1FA0ECB6/ec770fa05c7ce60a4e07ccc074dddf28/png/?thumbnail_max_width=850&url=https%3A%2F%2Fwww.43layers.com%2Fproducts%2Fspecial%2FProduct-Hunt",
+        "name": "Water",
+        "tagline": "Calorie-free, Sodium-free, Hydration",
+        "discussion_url": "https://getforksy.com",
+        "thumbnail": "https://drive.google.com/file/d/0B8bCt6QNkFRVZWl5Nkc4MXZUa28/view?usp=sharing",
         "product_url": "https://www.producthunt.com/r/b704ae84e992e1/41413?app_id=1948",
         "isGoodSeed": "false"
+      },
+      {
+        "name": "Red Velvet Cake",
+        "tagline": "Classic dessert from Southern Cuisine",
+        "discussion_url": "https://getforksy.com",
+        "thumbnail": "https://drive.google.com/open?id=0B8bCt6QNkFRVajJyTE1vZnRLelk",
+        "product_url": "http://nutritiondata.self.com/facts/recipe/1831535/2",
+        "isGoodSeed": "false"
+      },
+      {
+        "name": "Kale",
+        "tagline": "An everyday super food",
+        "discussion_url": "https://getforksy.com",
+        "thumbnail": "https://drive.google.com/file/d/0B8bCt6QNkFRVSGZhV3ktaFpaYW8/view?usp=sharing",
+        "product_url": "http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2462/2",
+        "isGoodSeed": "true"
+      },
+      {
+        "name": "Edamame",
+        "tagline": "Steamed with Sea Salt",
+        "discussion_url": "https://getforksy.com",
+        "thumbnail": "https://drive.google.com/file/d/0B8bCt6QNkFRVYnI5Y0FMTDZnZzg/view?usp=sharing",
+        "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
+        "isGoodSeed": "true"
       }
 
 ];
@@ -85,6 +109,8 @@ Controller for Garden
 */
 .controller('GardenCtrl', function($scope, User) {
   $scope.gardenSeeds = User.favorites;
+  // TODO: choose garden image based on the score
+
   })
 
 
