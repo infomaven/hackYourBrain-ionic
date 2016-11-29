@@ -1,0 +1,46 @@
+<ion-view view-title="Thunder" class="splash-page" hide-nav-bar="true">
+  <ion-content scroll="false">
+    <div class="padding logo">
+      <h1>Hack Your Brain</h1>
+      <h3>Train your brain to pick healthier food options</h3>
+    </div>
+    <div class="login-form">
+      <div class="card">
+        <div class="list">
+        <label class="item item-input" ng-show="form.signUp">
+          <input type="text" ng-model="form.firstname" placeholder="Enter your First Name">
+        </label>
+        <label class="item item-input" ng-show="form.signUp">
+          <input type="text" ng-model="form.lastname" placeholder="Enter your Last Name">
+        </label>
+        <label class="item item-input" >
+          <input type="text" ng-model="form.email" placeholder="Enter your Email Address">
+        </label>
+        <label class="item item-input" >
+          <input type="password" ng-model="form.password" placeholder="Enter your Password">
+        </label>
+        <label class="item item-input" ng-show="form.signUp">
+          <input type="text" ng-model="form.headline" placeholder="Enter your Headline">
+        </label>
+      </div>
+    </div>
+
+    <div class="padding-left padding-right">
+      <button class="button.button.button-block.action-button" ng-show="form.signUp"
+              ng-class="{'button-positive': !form.signUp, 'button-balanced': form.signUp}"
+              ng-click="submitSignUpForm(form.email.form.password, form.firstname, form.lastname">
+        Sign up
+      </button>
+      <button class="button.button.button-block.action-button" ng-show="!form.signUp"
+              ng-class="{'button-positive': !form.signUp, 'button-balanced': form.signUp}"
+              ng-click="submitSignUpForm(form.email.form.password">
+        Login
+      </button>
+
+    </div>
+</div>
+    <div class="padding signup-opt" ng-click="form.signUp=!form.signUp">
+      {{form.signUp ? 'Have an account? Sign in!' : 'Need an account? Sign up!'}}
+    </div>
+  </ion-content>
+</ion-view>

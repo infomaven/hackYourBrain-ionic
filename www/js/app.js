@@ -63,11 +63,11 @@
     .state('tab.garden', {
       url: '/garden',
       views: {
-        '/garden': {
+        'tab-garden': {
           templateUrl: 'templates/garden.html',
           controller: 'GardenCtrl'
           }
-         }
+        }
     })
 
     .state('tab.favorites.detail', {
@@ -80,7 +80,28 @@
         }
     })
 
+     // splash page
+  .state('splash', {
+    url: '/',
+    templateUrl: 'templates/splash.html',
+    controller: 'SplashCtrl'
+    })
+
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/tab/discover');
+//    $urlRouterProvider.otherwise('/');
+ $urlRouterProvider.otherwise('/tab/discover');
+
+  })
+
+
+
+  .constant('SERVER', {
+  // local server
+  url: 'http://localhost:3000'
 
   });
+
+
+
+
+  ;
