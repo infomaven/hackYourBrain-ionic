@@ -2,7 +2,15 @@
   <ion-content scroll="false">
     <div>
       <h3>Garden image goes here</h3>
+      <div class="card garden">
+        <div class="item garden-image">
+          <img ng-src="{{garden.path}}">
+        </div>
+        <div class="item">
+          <h2>{{garden.level}}</h2>
+          <p>{{garden.message}}</p>
+        </div>
+      </div>
     </div>
-
   </ion-content>
 </ion-view>
