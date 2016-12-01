@@ -1,16 +1,13 @@
 <ion-view view-title="Garden" class="garden-page">
   <ion-content scroll="false">
-    <div>
-      <h3>Garden image goes here</h3>
-      <div class="card garden">
-        <div class="item garden-image">
-          <img ng-src="{{garden.path}}">
-        </div>
-        <div class="item">
-          <h2>{{garden.level}}</h2>
+    <div class="padding logo">
+      <h2>This is the Garden from the seeds you chose</h2>
+          <h4>{{garden.level}}</h4>
           <p>{{garden.message}}</p>
-        </div>
-      </div>
+    </div>
+    <div class="current-garden">
+      <img ng-src="{{getGardenImage()}}">
+    </div>
     </div>
   </ion-content>
 </ion-view>

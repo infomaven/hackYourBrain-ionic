@@ -70,15 +70,6 @@
         }
     })
 
-    .state('tab.favorites.detail', {
-      url: '/favorites/detail',
-      views: {
-        '/favorites-detail': {
-          templateUrl: 'templates/favorites-detail.html',
-          controller: 'DetailCtrl'
-          }
-        }
-    })
 
      // splash page
   .state('splash', {

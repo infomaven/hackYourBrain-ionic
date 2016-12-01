@@ -65,12 +65,17 @@ Controller for the discover page
 
   ];
 
+  // fixme: shuffle the array
+  $scope.products.sort( function() {
+    return 0.5 - Math.random()
+    });
+
   // initialize current product to first element of the array
   $scope.currentProduct = angular.copy($scope.products[0]);
 
   // fire method when we select 'favorite' or 'skip' a product
   $scope.sendFeedback = function(bool) {
-      if (bool) User.addProductToFavorites( $scope.currentProduct);
+      if (bool) User.addProductToFavorites( $scope.currentProduct, $scope.currentProduct.isGoodSeed);
       // set variable for the correct animation
       $scope.currentProduct.rated = bool;
       $scope.currentProduct.hide = true;
@@ -94,11 +99,23 @@ Controller for favorites page
 .controller('FavoritesCtrl', function($scope, User) {
   $scope.favorites = User.favorites;
 
+
   $scope.removeProduct = function( product, index) {
         User.removeProductFromFavorites(product,index);
     }
 
-  $scope.goodSeedCount = User.getScore();
+ // $scope.goodSeedCount = User.getScore();
+  $scope.calculateScoreFromFavorites = function () {
+    for (i=0; i<$scope.favorites.length; i++) {
+      if ($scope.favorites[i].isGoodSeed == "true") {
+        $scope.favoritesScore++;
+
+      }
+    }
+    console.log("Score from FavoritesCtrl = " + $scope.favoritesScore);
+
+    User.setScore( $scope.favoritesScore);
+   };
 
 })
 
@@ -139,24 +156,40 @@ Controller for Garden
    ];
 
   $scope.gardenSeeds = User.favorites;
+  console.log("GardenCtrl number of cards seen = " + $scope.gardenSeeds.length );
+
   $scope.score = User.getScore();
-  console.log($scope.score);
+  console.log("GardenCtrl score = " + $scope.score);
+  $scope.gardenLevel = "";
+  $scope.gardenMessage = "";
 
   // fixme: choose garden image based on the score
-  $scope.gardenImg = function( score) {
-    if (score < 7) {
+
+  $scope.getGardenImage = function() {
+    if ( $scope.score < 7) {
+      console.log("Garden needs work!");
+      $scope.gardenLevel = $scope.gardens[0].level;
+      $scope.gardenMessage = $scope.gardens[0].message;
+
       return $scope.gardens[0].path;
     }
 
-    if (score >= 7 && score < 15) {
+    if ( $scope.score >= 7 && $scope.score < 15) {
+       console.log("Garden is OK!");
+       $scope.gardenLevel = $scope.gardens[1].level;
+      $scope.gardenMessage = $scope.gardens[1].message;
       return $scope.gardens[1].path;
     }
 
     else {
+      console.log("Garden is healthy!");
+      $scope.gardenLevel = $scope.gardens[2].level;
+      $scope.gardenMessage = $scope.gardens[2].message;
       return $scope.gardens[2].path;
     }
 
    };
+   
 
 })
 
