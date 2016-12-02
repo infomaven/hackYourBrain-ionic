@@ -16,7 +16,7 @@ Controller for the discover page
         },
         {
           "name": "French Fries",
-          "tagline": "Get them while they're hot!",
+          "tagline": "Fries - Get them while they're hot!",
           "discussion_url": "https://getforksy.com",
           "thumbnail": "img/b_frenchfries.jpg",
           "product_url": "http://nutritiondata.self.com/facts/foods-from-mcdonalds/6235/2",
@@ -32,7 +32,7 @@ Controller for the discover page
         },
         {
           "name": "Water",
-          "tagline": "Calorie-free, Sodium-free, Hydration",
+          "tagline": "Water - Calorie-free, Sodium-free, Hydration",
           "discussion_url": "https://getforksy.com",
           "thumbnail": "img/g_water.jpg",
           "product_url": "https://www.producthunt.com/r/b704ae84e992e1/41413?app_id=1948",
@@ -40,7 +40,7 @@ Controller for the discover page
         },
         {
           "name": "Red Velvet Cake",
-          "tagline": "Classic dessert from Southern Cuisine",
+          "tagline": "Red Velvet Cake - Classic dessert from Southern Cuisine",
           "discussion_url": "https://getforksy.com",
           "thumbnail": "img/redvelvet.jpeg",
           "product_url": "http://nutritiondata.self.com/facts/recipe/1831535/2",
@@ -56,9 +56,105 @@ Controller for the discover page
         },
         {
           "name": "Edamame",
-          "tagline": "Steamed with Sea Salt",
+          "tagline": "Soybeans - Steamed with Sea Salt",
           "discussion_url": "https://getforksy.com",
           "thumbnail": "img/g_edmame.jpg",
+          "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
+          "isGoodSeed": "true"
+        },
+        {
+          "name": "Baloney",
+          "tagline": "Cold cuts - Processed meat",
+          "discussion_url": "https://getforksy.com",
+          "thumbnail": "img/b_baloney.jpg",
+          "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
+          "isGoodSeed": "false"
+        },
+        {
+          "name": "Coke",
+          "tagline": "Coke- It's the real thing",
+          "discussion_url": "https://getforksy.com",
+          "thumbnail": "img/b_coca_cola.jpg",
+          "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
+          "isGoodSeed": "false"
+        },
+        {
+          "name": "Cookies",
+          "tagline": "Cookies - shhh..don't tell Cookie Monster!",
+          "discussion_url": "https://getforksy.com",
+          "thumbnail": "img/b_cookies.jpg",
+          "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
+          "isGoodSeed": "false"
+        },
+        {
+          "name": "Donuts",
+          "tagline": "VooDoo, Blue Star, Winchells, Dolly Madison",
+          "discussion_url": "https://getforksy.com",
+          "thumbnail": "img/b_donuts.jpg",
+          "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
+          "isGoodSeed": "false"
+        },
+        {
+          "name": "Frappucino",
+          "tagline": "Sweet blended coffee drinks",
+          "discussion_url": "https://getforksy.com",
+          "thumbnail": "img/b_frappucino.jpg",
+          "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
+          "isGoodSeed": "false"
+        },
+        {
+          "name": "PotatoChips",
+          "tagline": "These can be baked, but what's the point?",
+          "discussion_url": "https://getforksy.com",
+          "thumbnail": "img/b_PotatoChips.jpg",
+          "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
+          "isGoodSeed": "false"
+        },
+        {
+          "name": "Carrots",
+          "tagline": "Bugs Bunny would be proud!",
+          "discussion_url": "https://getforksy.com",
+          "thumbnail": "img/g_carrots.jpg",
+          "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
+          "isGoodSeed": "true"
+        },
+        {
+          "name": "Nuts",
+          "tagline": "Nuts - Low fat, raw is best",
+          "discussion_url": "https://getforksy.com",
+          "thumbnail": "img/g_nuts.jpg",
+          "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
+          "isGoodSeed": "true"
+        },
+        {
+          "name": "Popcorn",
+          "tagline": "Popcorn - high fiber, crunchy, salty...yum!",
+          "discussion_url": "https://getforksy.com",
+          "thumbnail": "img/g_popcorn.jpg",
+          "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
+          "isGoodSeed": "true"
+        },
+        {
+          "name": "Veggies",
+          "tagline": "Steamed, sauteed, boiled or baked - Veggies rock!",
+          "discussion_url": "https://getforksy.com",
+          "thumbnail": "img/g_veggies.jpg",
+          "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
+          "isGoodSeed": "true"
+        },
+        {
+          "name": "Milk",
+          "tagline": "Drink regularly to build strong bones and teeth",
+          "discussion_url": "https://getforksy.com",
+          "thumbnail": "img/g_milk.jpg",
+          "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
+          "isGoodSeed": "true"
+        },
+        {
+          "name": "Eggs",
+          "tagline": "Eggs - Nature's perfect food",
+          "discussion_url": "https://getforksy.com",
+          "thumbnail": "img/g_eggs.jpg",
           "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
           "isGoodSeed": "true"
         }
@@ -112,9 +208,12 @@ Controller for favorites page
 
       }
     }
-    console.log("Score from FavoritesCtrl = " + $scope.favoritesScore);
+    console.log("Score from FavoritesCtrl.$scope.favoritesScore = " + $scope.favoritesScore);
 
     User.setScore( $scope.favoritesScore);
+
+    User.goodSeedCount = $scope.favoritesScore;
+    console.log("User.goodSeedCount = " + User.goodSeedCount);
    };
 
 })
@@ -156,7 +255,6 @@ Controller for Garden
    ];
 
   $scope.gardenSeeds = User.favorites;
-  console.log("GardenCtrl number of cards seen = " + $scope.gardenSeeds.length );
 
   $scope.score = User.getScore();
   console.log("GardenCtrl score = " + $scope.score);
@@ -189,7 +287,7 @@ Controller for Garden
     }
 
    };
-   
+
 
 })
 
