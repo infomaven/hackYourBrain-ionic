@@ -1,7 +1,9 @@
 <ion-view view-title="Discover" class="discover-page">
   <ion-content scroll="false">
     <div>
-      <h2>Hack Your Brain</h2>
+      <h2>Hack Your Brain </h2>
+    </div>
+    <div>
       <h4>Choose Wisely</h4>
     </div>
     <div class="list card current-product"
@@ -14,16 +16,15 @@ favorited: currentProduct.rated == true}"
       </div>
       <div class="item">
         <h2>{{currentProduct.name}}</h2>
-        <p>{{currentProduct.tagline}}</p>
       </div>
       <div class="item tabs tabs-secondary tabs-icon-left">
         <a class="tab-item" ng-click="sendFeedback(false)">
           <i class="icon ion-close"></i>
-          Skip
+          NO
         </a>
          <a class="tab-item" ng-click="sendFeedback(true)">
           <i class="icon ion-heart"></i>
-          Favorite
+          YES
         </a>
       </div>
     </div>
