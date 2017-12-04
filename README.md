@@ -1,8 +1,8 @@
-#HackYourBrainIonic
+# HackYourBrainIonic
 
-##A mobile-friendly game that trains and hacks your brain to make healthier food choices. 
+## A mobile-friendly game that trains and hacks your brain to make healthier food choices. 
 
-###How to get started
+### How to get started
 
 1. Install Ionic tools for your computer OS (Windows, Linux, Mac OS)
 
@@ -15,26 +15,29 @@
 
 
 #### If targeting a mobile device, use one of the following - 
-#####android
+##### android
 -- 20171203: seeing problems with android build due to changes in the latest Android SDK
-ionic build android
-ionic run android
+`ionic build android`
 
-#####ios
-ionic build ios
-# defaults to ios SE
-ionic run ios
+`ionic run android`
+
+##### ios
+`ionic build ios`
+
+If no emulator is specified, it defaults to ios SE
+
+`ionic run ios`
 
 
 ======
 
 ##### Web Browser
-ionic serve
+`ionic serve`
 
 =====
 
-###
-To stop the app, shut down emulator or close your web browser
+### Quit
+To stop the app, shut down emulator window or close your web browser
 
 
 
@@ -42,9 +45,3 @@ To stop the app, shut down emulator or close your web browser
 ###Troubleshooting
 # list installed plugins
  ionic plugin list
-
-
-
-
--- quit
-Shut down emulator window 
