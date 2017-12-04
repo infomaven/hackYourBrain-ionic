@@ -14,24 +14,24 @@
 
 
 
-#### If targeting a mobile device, use one of the following - 
-##### android
--- 20171203: seeing problems with android build due to changes in the latest Android SDK
-`ionic build android`
+    #### If targeting a mobile device, use one of the following - 
+    ###### android
+    -- 20171203: seeing problems with android build due to changes in the latest Android SDK
+    `ionic build android`
 
-`ionic run android`
+    `ionic run android`
 
-##### ios
-`ionic build ios`
+    ###### ios
+    `ionic build ios`
 
-If no emulator is specified, it defaults to ios SE
+#### If no emulator is specified, it defaults to ios SE
 
-`ionic run ios`
+        `ionic run ios`
 
 
 ======
 
-##### Web Browser
+##### If not targeting a mobile device, use WEB BROWSER command 
 `ionic serve`
 
 =====
