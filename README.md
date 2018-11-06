@@ -45,3 +45,6 @@ To stop the app, shut down emulator window or close your web browser
 ###Troubleshooting
 # list installed plugins
  ionic plugin list
+
+ // refactor to organize the code
+ https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md

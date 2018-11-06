@@ -1,11 +1,11 @@
 angular.module('thunder.controllers', ['ionic', 'thunder.services'])
 
 /*
-Controller for the discover page
+Controller for the discover page ----------------------------------------------------------------------------------
 */
 .controller('DiscoverCtrl', function($scope, $timeout, User) {
 
-  $scope.products = [
+  $scope.food = [
         {
           "name": "Grilled Fish",
           "tagline": "Simple, Satisfying protein",
@@ -161,13 +161,13 @@ Controller for the discover page
 
   ];
 
-  // fixme: shuffle the array
-  $scope.products.sort( function() {
+  // fixme: change from sorting to a true 'shuffle'
+  $scope.food.sort( function() {
     return 0.5 - Math.random()
     });
 
   // initialize current product to first element of the array
-  $scope.currentProduct = angular.copy($scope.products[0]);
+  $scope.currentProduct = angular.copy($scope.food[0]);
 
   // fire method when we select 'favorite' or 'skip' a product
   $scope.sendFeedback = function(bool) {
@@ -179,10 +179,9 @@ Controller for the discover page
       // $timeout module allows animation to complete before changing to next product
       $timeout(function() {
       // REFACTOR: change code to shuffle the array and then iterate through it one time
-      // get index of a random product
+      // select random food from the list
         var randomProductIndex = Math.round(Math.random() * ($scope.products.length - 1));
-        // update current product in $scope
-        $scope.currentProduct = angular.copy( $scope.products[randomProductIndex]);
+        $scope.currentProduct = angular.copy( $scope.food[randomProductIndex]);
       }, 250);
 }
 
@@ -190,43 +189,74 @@ Controller for the discover page
 })
 
 /*
-Controller for favorites page
+Controller for favorites page --------------------------------------------------------------------------------------------------------------------
 */
 .controller('FavoritesCtrl', function($scope, User) {
-  $scope.favorites = User.favorites;
+  // "Favorites" keeps track of food  images a user chose to "keep" (swipe right)
+  //$scope.favorites = User.favorites;
+  $scope.favorites = [];
 
+// note: this is not used. todo: omit removeProduct() from code base
+  // $scope.removeProduct = function( product, index) {
+  //       User.removeProductFromFavorites(product,index);
+  //   }
 
-  $scope.removeProduct = function( product, index) {
-        User.removeProductFromFavorites(product,index);
+     // new
+  $scope.increaseScore = function($scope, newFoodSelection) {
+    if (newFoodSelection.isGoodSeed) {
+        $scope.favorites = $scope.favorites + 1;
+        // experiment
+        User.favorites = $scope.favorites;
+        $scope.gameCounter = $scope.gameCounter + 1;
+        User.gameCounter = $scope.gameCounter;
+        // original
+       // return $scope.favorites;
+       // experiment:
+       return User;
+
+    }
+    // experiement
+    else{
+      // original
+      //return $scope.favorites;
+      // experiment
+      return User;
     }
 
+  }
+
+
+    // note: if we increment score for 'good' choices only, we can eliminate need to calculate a score
  // $scope.goodSeedCount = User.getScore();
-  $scope.calculateScoreFromFavorites = function () {
-    for (i=0; i<$scope.favorites.length; i++) {
-      if ($scope.favorites[i].isGoodSeed == "true") {
-        $scope.favoritesScore++;
+  // $scope.calculateScoreFromFavorites = function () {
+  //   for (i=0; i<$scope.favorites.length; i++) {
+  //     if ($scope.favorites[i].isGoodSeed == "true") {
+  //       $scope.favoritesScore++;
 
-      }
-    }
-    console.log("Score from FavoritesCtrl.$scope.favoritesScore = " + $scope.favoritesScore);
+  //     }
+  //   }
+  //   // console.log("Score from FavoritesCtrl.$scope.favoritesScore = " + $scope.favoritesScore);
 
-    User.setScore( $scope.favoritesScore);
+  //   // User.setScore( $scope.favoritesScore);
 
-    User.goodSeedCount = $scope.favoritesScore;
-    console.log("User.goodSeedCount = " + User.goodSeedCount);
-   };
+  //   // User.goodSeedCount = $scope.favoritesScore;
+  //   // console.log("User.goodSeedCount = " + User.goodSeedCount);
+  //  };
 
-})
+}
+)
 
 /*
 Controller for splash page
 */
-.controller('SplashCtrl', function($scope) {} )
+.controller('SplashCtrl', function($scope) {}
+ )
 
 /*
 Controller for tabs
 */
-.controller('TabsCtrl', function($scope) {} )
+.controller('TabsCtrl', function($scope) {} 
+)
 
 /*
 Controller for Garden
@@ -254,14 +284,14 @@ Controller for Garden
        }
    ];
 
-  $scope.gardenSeeds = User.favorites;
+  //$scope.gardenSeeds = User.favorites;
+  $scope.score = User.favorites;
+  $scope.gameCounter = User.gameCounter;
 
-  $scope.score = User.getScore();
-  console.log("GardenCtrl score = " + $scope.score);
+ //$scope.score = User.getScore();
+  console.log("GardenCtrl score = " + $scope.gameCounter);
   $scope.gardenLevel = "";
   $scope.gardenMessage = "";
-
-  // fixme: choose garden image based on the score
 
   $scope.getGardenImage = function() {
     if ( $scope.score < 7) {
@@ -287,9 +317,8 @@ Controller for Garden
     }
 
    };
-
-
-})
+  }
+)
 
 
 
@@ -299,7 +328,8 @@ Controller for Seed Detail (selected Index)
 .controller('DetailCtrl', function($scope, User, index) {
   $scope.detailItem = User.favorites[i];
 
-})
+}
+)
 
 
 
