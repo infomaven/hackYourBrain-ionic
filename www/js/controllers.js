@@ -297,15 +297,15 @@ Controller for Garden
 
   $scope.gardenSeeds = User.favorites;
 
-  $scope.score = User.getScore();
+  //$scope.score = User.getScore();
+
   console.log("GardenCtrl score = " + $scope.score);
   $scope.gardenLevel = "";
   $scope.gardenMessage = "";
 
-  // fixme: choose garden image based on the score
 
   $scope.getGardenImage = function() {
-    if ( $scope.score < 7) {
+    if ( $scope.userScore < 7) {
       console.log("Garden needs work!");
       $scope.gardenLevel = $scope.gardens[0].level;
       $scope.gardenMessage = $scope.gardens[0].message;
@@ -313,7 +313,7 @@ Controller for Garden
       return $scope.gardens[0].path;
     }
 
-    if ( $scope.score >= 7 && $scope.score < 15) {
+    if ( $scope.userScore >= 7 && $scope.userScore < 15) {
        console.log("Garden is OK!");
        $scope.gardenLevel = $scope.gardens[1].level;
       $scope.gardenMessage = $scope.gardens[1].message;
