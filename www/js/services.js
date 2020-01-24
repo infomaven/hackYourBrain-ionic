@@ -41,6 +41,12 @@ angular.module('thunder.services', [])
       o.goodSeedCount = calculatedScore;
      }
 
+     o.clearFavorites = function() {
+        o.favorites.length = 0;
+
+        return o.favorites;
+     }
+
     return o;
 
 

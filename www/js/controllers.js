@@ -161,11 +161,22 @@ Controller for the discover page
           "thumbnail": "img/g_eggs.jpg",
           "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
           "isGoodSeed": true
+        },
+        {
+          "name": "Oatmeal",
+          "tagline": "Oatmeal Satisfies",
+          "discussion_url": "https://getforksy.com",
+          "thumbnail": "img/g_oatmeal.jpg",
+          "product_url": "",
+          "isGoodSeed": true
+
         }
   ];
+  console.log("list before shuffle - ", $scope.original);
+
   // HACK: put all the business logic here  just to get it working
   var selectedForGame = [];
-  GAME_LENGTH = 12;
+  GAME_LENGTH = 10;
   /**
  * Randomly shuffle an array
  * https://stackoverflow.com/a/2450976/1293256
@@ -194,8 +205,8 @@ Controller for the discover page
   }
 
   // create game list as a subset  
-  $scope.products = shuffle($scope.original.slice(0, GAME_LENGTH - 1));
-
+  $scope.products = shuffle($scope.original.slice(0, GAME_LENGTH ));
+  console.log("List after shuffle - ", $scope.products);
 
 
 
@@ -206,26 +217,29 @@ Controller for the discover page
 
   $scope.userScore = 0; 
   // fixme: figure out how to show each food once. We need to review 12 images and then quit. 
-  var start = 0;
-   $scope.currentProduct = angular.copy($scope.products[start]);
-   console.log("currentProduct: ", $scope.currentProduct["name"]);
+  var i = 0;
+   $scope.currentProduct = angular.copy($scope.products[i]);
+   console.log("current: ", $scope.currentProduct["name"]);
 
   $scope.sendFeedback = function(bool) {
       if (bool) User.addProductToFavorites( $scope.currentProduct, $scope.currentProduct.isGoodSeed);
       // set variable for the correct animation
       $scope.currentProduct.rated = bool;
       $scope.currentProduct.hide = true;
-      console.log("currentProduct: ", $scope.currentProduct);
+      console.log("food chosen: ", $scope.currentProduct["name"]);
       if ($scope.currentProduct.isGoodSeed) {
         $scope.userScore++;
       }
 
-      console.log( "user score = ", $scope.userScore)
+      console.log( "score = ", $scope.userScore);
+      User.setScore($scope.userScore);
 
       // $timeout module allows animation to complete before changing to next product
       $timeout(function() {
-        var randomProductIndex = Math.round(Math.random() * ($scope.products.length - 1));
-        $scope.currentProduct = angular.copy( $scope.products[randomProductIndex]);
+        //var randomProductIndex = Math.round(Math.random() * ($scope.products.length - 1));
+        // step through the foods in sequence
+        i++;
+        $scope.currentProduct = angular.copy( $scope.products[i]);
      }, 250);
 }
 })
@@ -244,7 +258,11 @@ Controller for favorites page
  // $scope.goodSeedCount = User.getScore();
   $scope.calculateScoreFromFavorites = function () {
     for (i=0; i<$scope.favorites.length; i++) {
-      if ($scope.favorites[i].isGoodSeed == "true") {
+      // if ($scope.favorites[i].isGoodSeed == "true") {
+      //   $scope.favoritesScore++;
+
+      // }
+      if ($scope.favorites[i].isGoodSeed ) {
         $scope.favoritesScore++;
 
       }
@@ -296,35 +314,36 @@ Controller for Garden
    ];
 
   $scope.gardenSeeds = User.favorites;
+  $scope.userScore = User.getScore;
+  console.log("user favorites: ", User.favorites);
+  console.log("user score: ", User.getScore);
+  
 
   //$scope.score = User.getScore();
 
-  console.log("GardenCtrl score = " + $scope.score);
+  console.log("GardenCtrl score = " + $scope.userScore);
   $scope.gardenLevel = "";
   $scope.gardenMessage = "";
 
 
   $scope.getGardenImage = function() {
     if ( $scope.userScore < 7) {
-      console.log("Garden needs work!");
-      $scope.gardenLevel = $scope.gardens[0].level;
-      $scope.gardenMessage = $scope.gardens[0].message;
+      $scope.gardenLevel = $scope.gardens[0]["level"];
+      $scope.gardenMessage = $scope.gardens[0]["message"];
 
-      return $scope.gardens[0].path;
+      return $scope.gardens[0]["path"];
     }
 
     if ( $scope.userScore >= 7 && $scope.userScore < 15) {
-       console.log("Garden is OK!");
-       $scope.gardenLevel = $scope.gardens[1].level;
-      $scope.gardenMessage = $scope.gardens[1].message;
-      return $scope.gardens[1].path;
+       $scope.gardenLevel = $scope.gardens[1]["level"];
+      $scope.gardenMessage = $scope.gardens[1]["message"];
+      return $scope.gardens[1]["path"];
     }
 
     else {
-      console.log("Garden is healthy!");
-      $scope.gardenLevel = $scope.gardens[2].level;
-      $scope.gardenMessage = $scope.gardens[2].message;
-      return $scope.gardens[2].path;
+      $scope.gardenLevel = $scope.gardens[2]["level"];
+      $scope.gardenMessage = $scope.gardens[2]["message"];
+      return $scope.gardens[2]["path"];
     }
 
    };
