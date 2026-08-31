@@ -3,16 +3,20 @@ angular.module('thunder.controllers', ['ionic', 'thunder.services'])
 /*
 Controller for the discover page
 */
-.controller('DiscoverCtrl', function($scope, $timeout, User) {
-
-  $scope.products = [
+// new: using FoodList service
+// .controller('DiscoverCtrl', function($scope, $timeout, User, FoodList) {
+//   $scope.products = FoodList.getMenu;
+  
+  // old: food list built inline
+  .controller('DiscoverCtrl', function($scope, $timeout, User) {
+  $scope.original = [
         {
           "name": "Grilled Fish",
           "tagline": "Simple, Satisfying protein",
           "discussion_url": "https://getforksy.com",
           "thumbnail": "img/g_fish.jpg",
           "product_url": "http://nutritiondata.self.com/facts/finfish-and-shellfish-products/4234/2",
-          "isGoodSeed": "true"
+          "isGoodSeed": true
         },
         {
           "name": "French Fries",
@@ -20,7 +24,7 @@ Controller for the discover page
           "discussion_url": "https://getforksy.com",
           "thumbnail": "img/b_frenchfries.jpg",
           "product_url": "http://nutritiondata.self.com/facts/foods-from-mcdonalds/6235/2",
-          "isGoodSeed": "false"
+          "isGoodSeed": false
         },
         {
           "name": "Snickers",
@@ -28,7 +32,7 @@ Controller for the discover page
           "discussion_url": "https://getforksy.com",
           "thumbnail": "img/b_snickers.jpg",
           "product_url": "http://nutritiondata.self.com/facts/sweets/5461/2",
-          "isGoodSeed": "false"
+          "isGoodSeed": false
         },
         {
           "name": "Water",
@@ -36,7 +40,7 @@ Controller for the discover page
           "discussion_url": "https://getforksy.com",
           "thumbnail": "img/g_water.jpg",
           "product_url": "https://www.producthunt.com/r/b704ae84e992e1/41413?app_id=1948",
-          "isGoodSeed": "true"
+          "isGoodSeed": true
         },
         {
           "name": "Red Velvet Cake",
@@ -44,7 +48,7 @@ Controller for the discover page
           "discussion_url": "https://getforksy.com",
           "thumbnail": "img/redvelvet.jpeg",
           "product_url": "http://nutritiondata.self.com/facts/recipe/1831535/2",
-          "isGoodSeed": "false"
+          "isGoodSeed": false
         },
         {
           "name": "Kale",
@@ -52,7 +56,7 @@ Controller for the discover page
           "discussion_url": "https://getforksy.com",
           "thumbnail": "img/g_kale.jpg",
           "product_url": "http://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2462/2",
-          "isGoodSeed": "true"
+          "isGoodSeed": true
         },
         {
           "name": "Edamame",
@@ -60,7 +64,7 @@ Controller for the discover page
           "discussion_url": "https://getforksy.com",
           "thumbnail": "img/g_edmame.jpg",
           "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
-          "isGoodSeed": "true"
+          "isGoodSeed": true
         },
         {
           "name": "Baloney",
@@ -68,7 +72,7 @@ Controller for the discover page
           "discussion_url": "https://getforksy.com",
           "thumbnail": "img/b_baloney.jpg",
           "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
-          "isGoodSeed": "false"
+          "isGoodSeed": false
         },
         {
           "name": "Coke",
@@ -76,7 +80,7 @@ Controller for the discover page
           "discussion_url": "https://getforksy.com",
           "thumbnail": "img/b_coca_cola.jpg",
           "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
-          "isGoodSeed": "false"
+          "isGoodSeed": false
         },
         {
           "name": "Cookies",
@@ -84,7 +88,7 @@ Controller for the discover page
           "discussion_url": "https://getforksy.com",
           "thumbnail": "img/b_cookies.jpg",
           "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
-          "isGoodSeed": "false"
+          "isGoodSeed": false
         },
         {
           "name": "Donuts",
@@ -92,7 +96,7 @@ Controller for the discover page
           "discussion_url": "https://getforksy.com",
           "thumbnail": "img/b_donuts.jpg",
           "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
-          "isGoodSeed": "false"
+          "isGoodSeed": false
         },
         {
           "name": "Frappucino",
@@ -100,7 +104,7 @@ Controller for the discover page
           "discussion_url": "https://getforksy.com",
           "thumbnail": "img/b_frappucino.jpg",
           "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
-          "isGoodSeed": "false"
+          "isGoodSeed": false
         },
         {
           "name": "PotatoChips",
@@ -108,7 +112,7 @@ Controller for the discover page
           "discussion_url": "https://getforksy.com",
           "thumbnail": "img/b_PotatoChips.jpg",
           "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
-          "isGoodSeed": "false"
+          "isGoodSeed": false
         },
         {
           "name": "Carrots",
@@ -116,7 +120,7 @@ Controller for the discover page
           "discussion_url": "https://getforksy.com",
           "thumbnail": "img/g_carrots.jpg",
           "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
-          "isGoodSeed": "true"
+          "isGoodSeed": true
         },
         {
           "name": "Nuts",
@@ -124,7 +128,7 @@ Controller for the discover page
           "discussion_url": "https://getforksy.com",
           "thumbnail": "img/g_nuts.jpg",
           "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
-          "isGoodSeed": "true"
+          "isGoodSeed": true
         },
         {
           "name": "Popcorn",
@@ -132,7 +136,7 @@ Controller for the discover page
           "discussion_url": "https://getforksy.com",
           "thumbnail": "img/g_popcorn.jpg",
           "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
-          "isGoodSeed": "true"
+          "isGoodSeed": true
         },
         {
           "name": "Veggies",
@@ -140,7 +144,7 @@ Controller for the discover page
           "discussion_url": "https://getforksy.com",
           "thumbnail": "img/g_veggies.jpg",
           "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
-          "isGoodSeed": "true"
+          "isGoodSeed": true
         },
         {
           "name": "Milk",
@@ -148,7 +152,7 @@ Controller for the discover page
           "discussion_url": "https://getforksy.com",
           "thumbnail": "img/g_milk.jpg",
           "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
-          "isGoodSeed": "true"
+          "isGoodSeed": true
         },
         {
           "name": "Eggs",
@@ -156,37 +160,88 @@ Controller for the discover page
           "discussion_url": "https://getforksy.com",
           "thumbnail": "img/g_eggs.jpg",
           "product_url": "http://www.medicalnewstoday.com/articles/280285.php",
-          "isGoodSeed": "true"
+          "isGoodSeed": true
+        },
+        {
+          "name": "Oatmeal",
+          "tagline": "Oatmeal Satisfies",
+          "discussion_url": "https://getforksy.com",
+          "thumbnail": "img/g_oatmeal.jpg",
+          "product_url": "",
+          "isGoodSeed": true
+
         }
-
   ];
+  console.log("list before shuffle - ", $scope.original);
 
-  // fixme: shuffle the array
-  $scope.products.sort( function() {
-    return 0.5 - Math.random()
-    });
+  // HACK: put all the business logic here  just to get it working
+  var selectedForGame = [];
+  GAME_LENGTH = 10;
+  /**
+ * Randomly shuffle an array
+ * https://stackoverflow.com/a/2450976/1293256
+ * @param  {Array} array The array to shuffle
+ * @return {String}      The first item in the shuffled array
+ */
+  var shuffle = function (array) {
 
-  // initialize current product to first element of the array
-  $scope.currentProduct = angular.copy($scope.products[0]);
+    var currentIndex = array.length;
+    var temporaryValue, randomIndex;
 
-  // fire method when we select 'favorite' or 'skip' a product
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+
+  }
+
+  // create game list as a subset  
+  $scope.products = shuffle($scope.original.slice(0, GAME_LENGTH ));
+  console.log("List after shuffle - ", $scope.products);
+
+
+
+
+
+//------------------------------------------------------------------
+  console.log($scope.products);
+
+  $scope.userScore = 0; 
+  // fixme: figure out how to show each food once. We need to review 12 images and then quit. 
+  var i = 0;
+   $scope.currentProduct = angular.copy($scope.products[i]);
+   console.log("current: ", $scope.currentProduct["name"]);
+
   $scope.sendFeedback = function(bool) {
       if (bool) User.addProductToFavorites( $scope.currentProduct, $scope.currentProduct.isGoodSeed);
       // set variable for the correct animation
       $scope.currentProduct.rated = bool;
       $scope.currentProduct.hide = true;
+      console.log("food chosen: ", $scope.currentProduct["name"]);
+      if ($scope.currentProduct.isGoodSeed) {
+        $scope.userScore++;
+      }
+
+      console.log( "score = ", $scope.userScore);
+      User.setScore($scope.userScore);
 
       // $timeout module allows animation to complete before changing to next product
       $timeout(function() {
-      // REFACTOR: change code to shuffle the array and then iterate through it one time
-      // get index of a random product
-        var randomProductIndex = Math.round(Math.random() * ($scope.products.length - 1));
-        // update current product in $scope
-        $scope.currentProduct = angular.copy( $scope.products[randomProductIndex]);
-      }, 250);
+        //var randomProductIndex = Math.round(Math.random() * ($scope.products.length - 1));
+        // step through the foods in sequence
+        i++;
+        $scope.currentProduct = angular.copy( $scope.products[i]);
+     }, 250);
 }
-
-
 })
 
 /*
@@ -203,7 +258,11 @@ Controller for favorites page
  // $scope.goodSeedCount = User.getScore();
   $scope.calculateScoreFromFavorites = function () {
     for (i=0; i<$scope.favorites.length; i++) {
-      if ($scope.favorites[i].isGoodSeed == "true") {
+      // if ($scope.favorites[i].isGoodSeed == "true") {
+      //   $scope.favoritesScore++;
+
+      // }
+      if ($scope.favorites[i].isGoodSeed ) {
         $scope.favoritesScore++;
 
       }
@@ -255,35 +314,36 @@ Controller for Garden
    ];
 
   $scope.gardenSeeds = User.favorites;
+  $scope.userScore = User.getScore;
+  console.log("user favorites: ", User.favorites);
+  console.log("user score: ", User.getScore);
+  
 
-  $scope.score = User.getScore();
-  console.log("GardenCtrl score = " + $scope.score);
+  //$scope.score = User.getScore();
+
+  console.log("GardenCtrl score = " + $scope.userScore);
   $scope.gardenLevel = "";
   $scope.gardenMessage = "";
 
-  // fixme: choose garden image based on the score
 
   $scope.getGardenImage = function() {
-    if ( $scope.score < 7) {
-      console.log("Garden needs work!");
-      $scope.gardenLevel = $scope.gardens[0].level;
-      $scope.gardenMessage = $scope.gardens[0].message;
+    if ( $scope.userScore < 7) {
+      $scope.gardenLevel = $scope.gardens[0]["level"];
+      $scope.gardenMessage = $scope.gardens[0]["message"];
 
-      return $scope.gardens[0].path;
+      return $scope.gardens[0]["path"];
     }
 
-    if ( $scope.score >= 7 && $scope.score < 15) {
-       console.log("Garden is OK!");
-       $scope.gardenLevel = $scope.gardens[1].level;
-      $scope.gardenMessage = $scope.gardens[1].message;
-      return $scope.gardens[1].path;
+    if ( $scope.userScore >= 7 && $scope.userScore < 15) {
+       $scope.gardenLevel = $scope.gardens[1]["level"];
+      $scope.gardenMessage = $scope.gardens[1]["message"];
+      return $scope.gardens[1]["path"];
     }
 
     else {
-      console.log("Garden is healthy!");
-      $scope.gardenLevel = $scope.gardens[2].level;
-      $scope.gardenMessage = $scope.gardens[2].message;
-      return $scope.gardens[2].path;
+      $scope.gardenLevel = $scope.gardens[2]["level"];
+      $scope.gardenMessage = $scope.gardens[2]["message"];
+      return $scope.gardens[2]["path"];
     }
 
    };
