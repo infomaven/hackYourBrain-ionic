@@ -1,0 +1,41 @@
+name: DevSecOps CI Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  security_scans:
+    name: Automated Security Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Pull down the repository code
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Trufflehog needs full history to scan git logs properly
+
+      # Step 2: Scan for exposed API keys, passwords, and secrets
+      - name: Secret Scanning (Trufflehog)
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event.repository.default_branch }}
+          head: HEAD
+          extra_args: --only-verified
+
+      # Step 3: Check codebase for secure coding flaws (SAST)
+      - name: Static Application Security Testing (Semgrep)
+        run: |
+          python3 -m pip install semgrep
+          semgrep scan --config=auto --error
+
+      # Step 4: Check Node dependencies for known vulnerabilities (SCA)
+      # Note: This will fail on your legacy package.json, which is exactly what we want!
+      # Once you migrate to modern npm packages, this step will pass.
+      - name: Dependency Vulnerability Scan (npm audit)
+        run: |
+          npm audit --audit-level=high
