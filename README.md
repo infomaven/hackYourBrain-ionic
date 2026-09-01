@@ -10,28 +10,29 @@
 
 3. Change into project directory
 
-4. Build and Run the app (mobile device or web browser). Command details are below
+4. Build and Run the app for the platform you want to emulate. Currently the following are supported - 
+* Android
+* IOS
+* Chrome browser 
 
+Command details are below
 
-
-    #### If targeting a mobile device, use one of the following - 
-    ###### android
+    
+    ###### Android
     -- 20171203: seeing problems with android build due to changes in the latest Android SDK
-    `ionic build android`
+    ```
+    ionic build android
+    ionic run android
+    ```
 
-    `ionic run android`
-
-    ###### ios
-    `ionic build ios`
-
-#### If no emulator is specified, it defaults to ios SE
-
-        `ionic run ios`
+    ###### IOS
+    ```
+    ionic build ios
+    ionic run ios
+    ```
 
 
-======
-
-##### If not targeting a mobile device, use WEB BROWSER command 
+    ##### Chrome
 `ionic serve`
 
 =====
@@ -41,7 +42,8 @@ To stop the app, shut down emulator window or close your web browser
 
 
 
+###Troubleshooting Tips
+- check the console output. Often it will describe the issue
+- inventory your installed plugins 
 
-###Troubleshooting
-# list installed plugins
- ionic plugin list
+` ionic plugin list`
