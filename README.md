@@ -45,3 +45,6 @@ To stop the app, shut down emulator window or close your web browser
 ###Troubleshooting
 # list installed plugins
  ionic plugin list
+
+ ### Update
+ September 2026: The app will be migrated to a newer version of Ionic. Github actions will be added to apply more test rigor to the process. 
